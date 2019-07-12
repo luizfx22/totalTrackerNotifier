@@ -39,6 +39,10 @@ class TotalNotifyer:
             txt = tag.font.text
             self.status.append(txt.strip())        
         
+        self.date.pop(0)
+        self.time.pop(0)
+        self.status.pop(0)
+
         for i in range(len(self.status)):
             print (self.date[i], self.time[i], self.status[i])
         
