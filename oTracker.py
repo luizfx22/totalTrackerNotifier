@@ -1,5 +1,8 @@
 import re
 import requests
+
+from lib.Tasker import Tasker
+
 from bs4 import BeautifulSoup
 
 class TotalNotifyer:
@@ -12,7 +15,8 @@ class TotalNotifyer:
 
     def main(self):
         
-       
+        Tasker()
+
         req = requests.get(self.link, headers={'User-Agent': self.ua})
         req.close()
 
