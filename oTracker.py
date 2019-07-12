@@ -1,4 +1,4 @@
-import pyautogui
+import requests
+import bs4
+import json
 
-for i in range(1000):
-    print (i, end="\r")
