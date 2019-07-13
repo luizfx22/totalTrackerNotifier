@@ -52,14 +52,14 @@ class TotalNotifyer:
 
             for i in range(len(self.status)):
                 print (f" >> {time.strftime('%X')}:", self.date[i], self.time[i], self.status[i])
-            break
+            
             await asyncio.sleep(timer)
 
     async def getLoop(self):
         while True:
             a = 2 + 2
-            await asyncio.sleep(0.0002) 
-            break
+            await asyncio.sleep(0.0002)
+          
 
 if __name__ == "__main__":
     mine = """https://tracking.totalexpress.com.br/tracking_encomenda.php?code=qeYm9rL%2FzUONCsHcdFBnDZdOAhK6Owza2qbdGHq6lcQ1Nl2k5EASR0PN6BEpqlYc%2BPEmW32Hj8TXD%2B9ZwHMBCmJisKFHg5ruD66XMS8vEmiMVSBpnxY5zvI0fmocxx9cmK7OAbBnT78JRP3WXnP%2FZ%2F6fiLVfwgE6voYTvfzgy0dCLK3%2F"""
