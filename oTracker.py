@@ -2,6 +2,7 @@ import re
 import os
 import asyncio
 import requests
+import time
 
 from bs4 import BeautifulSoup
 
@@ -15,7 +16,7 @@ class TotalNotifyer:
 
 
     async def main(self, delay):   
-        timer = 1.2
+        timer = delay * 60
         while True:
             req = requests.get(self.link, headers={'User-Agent': self.ua})
             req.close()
@@ -50,15 +51,23 @@ class TotalNotifyer:
             os.system("cls")
 
             for i in range(len(self.status)):
-                print (self.date[i], self.time[i], self.status[i])
-                self.last_status = self.status[i]
-
+                print (f" >> {time.strftime('%X')}:", self.date[i], self.time[i], self.status[i])
+            break
             await asyncio.sleep(timer)
+
+    async def getLoop(self):
+        while True:
+            a = 2 + 2
+            await asyncio.sleep(0.0002) 
             break
 
 if __name__ == "__main__":
     mine = """https://tracking.totalexpress.com.br/tracking_encomenda.php?code=qeYm9rL%2FzUONCsHcdFBnDZdOAhK6Owza2qbdGHq6lcQ1Nl2k5EASR0PN6BEpqlYc%2BPEmW32Hj8TXD%2B9ZwHMBCmJisKFHg5ruD66XMS8vEmiMVSBpnxY5zvI0fmocxx9cmK7OAbBnT78JRP3WXnP%2FZ%2F6fiLVfwgE6voYTvfzgy0dCLK3%2F"""
-
-    l = TotalNotifyer(mine)
-
-    l.main(1)
+    async def yeet():
+        l = TotalNotifyer(mine)
+        run = asyncio.create_task(l.main(5))
+        bg = asyncio.create_task(l.getLoop())
+        await run
+        await bg
+    
+    asyncio.run(yeet())
